@@ -1,2 +1,15 @@
-<h1>Pet#index</h1>
-<p>Find me in app/views/pet/index.html.erb</p>
+<h1>Signup to be notified if your pet is found</h1>
+<div class="formContainer">
+  <%= form_for(@pet) do |f| %>
+    <%= f.label :type %>
+    <%= f.text_field :type %><br />
+    <%= f.label :breed %>
+    <%= f.text_field :breed %><br />
+    <%= f.label :color %>
+    <%= f.text_field :color %><br />
+    <%= f.label :sex %>
+    <%= f.text_field :sex %><br />
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  <% end %>
+</div>
