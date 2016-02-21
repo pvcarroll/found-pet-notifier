@@ -1,5 +1,6 @@
 <h1>Signup to be notified if your pet is found</h1>
 <div class="formContainer">
+  <h2>Sign up to be emailed when pet is found</h2>
   <%= form_for(@pet) do |f| %>
     <%= f.label :type %>
     <%= f.text_field :type %><br />
@@ -10,6 +11,7 @@
     <%= f.label :sex %>
     <%= f.text_field :sex %><br />
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email %><br />
+    <%= f.submit "Submit", class: "submitButton" %>
   <% end %>
 </div>
