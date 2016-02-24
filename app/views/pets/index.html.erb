@@ -1,0 +1,16 @@
+<div class="formContainer">
+  <h2>Sign up to be emailed when your pet is found</h2>
+  <%= form_for(@pet) do |f| %>
+      <%= f.label :type %>
+      <%= f.text_field :type %><br />
+      <%= f.label :breed %>
+      <%= f.text_field :breed %><br />
+      <%= f.label :color %>
+      <%= f.text_field :color %><br />
+      <%= f.label :sex %>
+      <%= f.text_field :sex %><br />
+      <%= f.label :email %>
+      <%= f.text_field :email %><br />
+      <%= f.submit "Submit", class: "submitButton" %>
+  <% end %>
+</div>
