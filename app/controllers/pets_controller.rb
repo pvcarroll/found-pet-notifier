@@ -6,7 +6,8 @@ class PetsController < ApplicationController
   def create
     puts pet_params
     @pet = Pet.new(pet_params)
-    @pet.save
+    # @pet.save
+    @pet.find_pet
   end
 
   private
