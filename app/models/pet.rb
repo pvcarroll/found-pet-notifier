@@ -1,7 +1,5 @@
 class Pet < ActiveRecord::Base
   def find_pet
-    typeString = "type = #{self.animalType}"
-    puts typeString
     if Rails.env.production?
       client = SODA::Client.new({:domain => "data.austintexas.gov", :app_token => "9lzsGmTO9Jp03lNdi1Db7JvJ6"})
       puts "client ", client.inspect
@@ -11,7 +9,7 @@ class Pet < ActiveRecord::Base
       # puts "response ", response.inspect
       response.each do |hashie|
         puts "HASHIE: "
-        print hashie.looks_like
+        puts hashie.looks_like
         puts self.breed
         if hashie.looks_like.include? self.breed
           puts "looks like #{self.breed}"
