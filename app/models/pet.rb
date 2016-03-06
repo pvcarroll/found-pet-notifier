@@ -10,7 +10,7 @@ class Pet < ActiveRecord::Base
       response = client.get("kz4x-q9k5", {"$where" => typeString})
       # puts "response ", response.inspect
       response.each do |hashie|
-        puts "HASHIE: ", hashie
+        puts "HASHIE: ", hashie.looks_like
       end
     else
 
