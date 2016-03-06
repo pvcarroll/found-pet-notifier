@@ -10,7 +10,7 @@ class Pet < ActiveRecord::Base
       response.each do |hashie|
         puts "HASHIE: "
         puts hashie.looks_like
-        # puts self.breed
+        puts self.breed
         # if hashie.looks_like.include? self.breed
         #   puts "looks like #{self.breed}"
         # end
