@@ -7,10 +7,7 @@ class PetsController < ApplicationController
     puts pet_params
     @pet = Pet.new(pet_params)
     # @pet.save
-    if Rails.env.production?
-      @pet.find_pet
-    end
-
+    @pet.find_pet
   end
 
   private
