@@ -11,8 +11,8 @@ class Pet < ActiveRecord::Base
         puts "HASHIE: "
         puts hashie.looks_like
         puts self.breed
-        looks_like = hashie.looks_like
-        if looks_like.includes? self.breed
+        looks_like = hashie.looks_like.downcase
+        if looks_like.include? self.breed
           puts "looks like #{self.breed}"
         end
       end
