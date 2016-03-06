@@ -8,7 +8,7 @@ class Pet < ActiveRecord::Base
       typeString = "type = '#{self.animalType}'"
       puts typeString
       response = client.get("kz4x-q9k5", {"$where" => typeString})
-      # puts "response ", response.inspect
+      puts "response ", response.inspect
     else
 
     end
