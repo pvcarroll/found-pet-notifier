@@ -12,12 +12,14 @@ class Pet < ActiveRecord::Base
         puts hashie.looks_like
         puts self.breed
         looks_like = hashie.looks_like.downcase
-        if looks_like.include? self.breed
-          puts "looks like #{self.breed}"
+        color = hashie.color.downcase
+        if (looks_like.include? self.breed) && (color.include? self.color)
+          puts "looks like #{self.breed} and color like #{self.color}"
         end
       end
     else
-
+      # DEVELOPMENT ENVIRONMENT
+      puts self.email
     end
   end
 end
