@@ -1,4 +1,5 @@
 class Pet < ActiveRecord::Base
+
   def find_pet
     if Rails.env.production?
       client = SODA::Client.new({:domain => "data.austintexas.gov", :app_token => "9lzsGmTO9Jp03lNdi1Db7JvJ6"})

@@ -8,7 +8,7 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     # @pet.save
     if @pet.find_pet
-      PetMailer.send_email(self).deliver_now
+      PetMailer.send_email(@pet).deliver_now
     end
   end
 
