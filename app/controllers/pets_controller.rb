@@ -4,7 +4,6 @@ class PetsController < ApplicationController
   end
 
   def create
-    puts pet_params
     @pet = Pet.new(pet_params)
     # @pet.save
     if @pet.find_pet
