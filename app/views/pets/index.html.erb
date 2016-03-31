@@ -2,7 +2,7 @@
   <h2>Sign up to be emailed when your pet is found</h2>
   <%= form_for(@pet) do |f| %>
     <%= f.label :animalType %>
-    <%= f.text_field :animalType %><br />
+    <%= f.select(:animalType, options_for_select([['Dog', 'Dog'], ['Cat', 'Cat']]))%><br />
     <%= f.label :breed %>
     <%= f.text_field :breed %><br />
     <%= f.label :color %>

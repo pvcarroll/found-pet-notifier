@@ -14,9 +14,10 @@ class Pet < ActiveRecord::Base
         looks_like = hashie.looks_like.downcase
         color = hashie.color.downcase
         sex = hashie.sex.downcase
-        print "SEX: ", sex
-        puts
-        if (looks_like.include? self.breed.downcase) && (color.include? self.color.downcase) && (sex.include? self.sex.downcase || sex == 'Unknown')
+
+        if (looks_like.include? self.breed.downcase) &&
+            (color.include? self.color.downcase) &&
+            (sex.include? self.sex.downcase || sex == 'Unknown')
           puts "LOOKS LIKE #{self.breed} AND COLOR LIKE #{self.color}"
           return true
           # Mail self.email
