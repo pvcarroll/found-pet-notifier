@@ -6,8 +6,9 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     # @pet.save
-    if @pet.find_pet
-      PetMailer.send_email(@pet).deliver_now
+    match = @pet.find_pet
+    if match != nil
+      PetMailer.send_email(@pet, match).deliver_now
     end
   end
 
