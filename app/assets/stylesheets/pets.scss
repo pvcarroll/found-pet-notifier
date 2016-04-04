@@ -6,12 +6,18 @@ body {
 }
 
 .formContainer {
-  width: 300px;
+  width: 400px;
+  padding: 30px;
   margin: 100px auto 0;
   background-color: #EFEFEF;
-  text-align: center;
+  text-align: left;
+}
+
+#new_pet {
+  margin: 20px;
 }
 
 .submitButton {
-  margin: 10px 0;
+  margin: 10px auto;
+  display: block;
 }
