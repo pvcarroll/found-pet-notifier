@@ -9,6 +9,7 @@ class Pet < ActiveRecord::Base
     puts typeString
     response = client.get("kz4x-q9k5", {"$where" => typeString})
     puts "RESPONSE ", response.inspect
+    matches = []
     response.each do |hashie|
       looks_like = hashie.looks_like.downcase
       color = hashie.color.downcase
@@ -19,12 +20,10 @@ class Pet < ActiveRecord::Base
           (sex.include? self.sex.downcase || sex == 'Unknown')
         puts "LOOKS LIKE #{self.breed} AND COLOR LIKE #{self.color}"
         # create match pet object
-        match = {animalType: self.animalType, breed: looks_like, color: color, sex: sex}
-        puts 'MATCH', match.inspect
-        return match
-      else
-        return nil
+        matches.push({animalType: self.animalType, breed: looks_like, color: color, sex: sex, image: hashie.image})
+        puts 'MATCHES ', matches.inspect
       end
     end
+    return matches
   end
 end

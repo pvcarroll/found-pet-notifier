@@ -1,7 +1,7 @@
 class PetMailer < ApplicationMailer
-  def send_email(pet, match)
+  def send_email(pet, matches)
     @pet = pet
-    @match = match
+    @matches = matches
     mail(to: @pet.email, subject: 'Found pet')
   end
 end

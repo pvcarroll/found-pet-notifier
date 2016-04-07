@@ -1,6 +1,9 @@
-Possible match found:
+Possible matches found:
 
-Type: <%= @match[:animalType] %>
-Looks like (breed): <%= @match[:breed] %>
-Color: <%= @match[:color] %>
-Sex: <%= @match[:sex] %>
+<% @matches.each do |match| %>
+  Type: <%= match[:animalType] %>
+  Looks like (breed): <%= match[:breed] %>
+  Color: <%= match[:color] %>
+  Sex: <%= match[:sex] %>
+  Image: <%= match[:image] %>
+<% end %>
