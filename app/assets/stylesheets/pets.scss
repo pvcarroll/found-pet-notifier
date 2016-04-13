@@ -17,7 +17,16 @@ body {
   margin: 20px;
 }
 
+.form-control {
+  margin-bottom: .6rem;
+}
+
 .submitButton {
-  margin: 10px auto;
+  margin: 15px auto;
   display: block;
+  background-color: #2E2F30;
+  color: #EFEFEF;
+  &:hover {
+    background-color: darkblue;
+  }
 }
