@@ -8,21 +8,28 @@ body {
 .formContainer {
   width: 400px;
   padding: 30px;
-  margin: 100px auto 0;
+  margin: 80px auto 0;
   background-color: #EFEFEF;
   text-align: left;
+  border-radius: 15px;
+  label {
+    margin-bottom: .1rem;
+  }
+  .form-control {
+    margin-bottom: .6rem;
+  }
+}
+
+.formTitle {
+  text-align: center;
 }
 
 #new_pet {
-  margin: 20px;
-}
-
-.form-control {
-  margin-bottom: .6rem;
+  margin: 20px 20px 0;
 }
 
 .submitButton {
-  margin: 15px auto;
+  margin: 15px auto 0;
   display: block;
   background-color: #2E2F30;
   color: #EFEFEF;
