@@ -1,10 +1,11 @@
-<p>Possible match found:</p>
-<% @matches.each do |match| %>
-  <p>
-    Type: <%= match[:animalType] %><br />
-    Looks like (breed): <%= match[:breed] %><br />
-    Color: <%= match[:color] %><br />
-    Sex: <%= match[:sex] %><br />
+<!--<p>Possible match found:</p>-->
+<!--<% @matches.each do |match| %>-->
+  <!--<p>-->
+    <!--Type: <%= match[:animalType] %><br />-->
+    <!--Looks like (breed): <%= match[:breed] %><br />-->
+    <!--Color: <%= match[:color] %><br />-->
+    <!--Sex: <%= match[:sex] %><br />-->
     Link with image: <%= match[:image] %>
-  </p>
-<% end %>
+  <!--</p>-->
+<!--<% end %>-->
+<%= render '/pets/pet' %>
