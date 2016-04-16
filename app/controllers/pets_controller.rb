@@ -5,12 +5,16 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
-    # @pet.save
+
     @matches = @pet.find_pet
     if @matches.any?
       PetMailer.send_email(@pet, @matches).deliver_now
     end
-    render @pet
+    if @pet.save
+      render @pet
+    elsif
+      redirect_to index
+    end
   end
 
   private

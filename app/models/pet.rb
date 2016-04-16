@@ -1,5 +1,5 @@
 class Pet < ActiveRecord::Base
-  attr_accessor :animalType, :breed, :color, :sex, :email
+  # attr_accessor :animalType, :breed, :color, :sex, :email
 
   def find_pet
     client = SODA::Client.new({:domain => "data.austintexas.gov", :app_token => "9lzsGmTO9Jp03lNdi1Db7JvJ6"})
