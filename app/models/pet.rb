@@ -24,4 +24,8 @@ class Pet < ActiveRecord::Base
     end
     return matches
   end
+
+  def pet_task
+    puts 'PET_TASK!!!!!!!!!!!'
+  end
 end
