@@ -1,3 +1,8 @@
+# require 'pet.rb'
+
+# set :environment, "development"
+set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
+
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
@@ -7,9 +12,9 @@
 #
 # set :output, "/path/to/my/cron_log.log"
 #
-every 2.minutes do
-  command "echo 'schedule.rb echo task'"
+every 1.minute do
   runner "Pet.pet_task"
+  # command "echo 'schedule.rb echo task'"
   # rake "some:great:rake:task"
 end
 #
