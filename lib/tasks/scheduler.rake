@@ -4,7 +4,3 @@ task :check_pets => :environment do
   Pet.first.pet_task
   puts "done."
 end
-
-task :send_reminders => :environment do
-  User.send_reminders
-end
