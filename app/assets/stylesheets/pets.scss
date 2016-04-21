@@ -2,7 +2,7 @@
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
-  background-color: #2E2F30;
+  background-image: url('lost_ugly_dog.jpg');
 }
 
 .formContainer {
@@ -12,6 +12,7 @@ body {
   background-color: #EFEFEF;
   text-align: left;
   border-radius: 15px;
+  opacity: .95;
   label {
     margin-bottom: .1rem;
   }
