@@ -3,6 +3,9 @@ task :check_pets => :environment do
   puts "Checking pets..."
   Pet.all.each do |pet|
     @pet = pet
+
+    find_matches @pet
+
     @matches = @pet.find_pet
     if @matches.any?
       PetMailer.send_email(@pet, @matches).deliver_now
