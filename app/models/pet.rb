@@ -25,6 +25,13 @@ class Pet < ActiveRecord::Base
     return matches
   end
 
+  def find_matches
+    @matches = self.find_pet
+    if @matches.any?
+      PetMailer.send_email(self, @matches).deliver_now
+    end
+  end
+
   def pet_task
     puts 'PET_TASK!!!!!!!!!!!'
   end

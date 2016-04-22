@@ -4,7 +4,7 @@ task :check_pets => :environment do
   Pet.all.each do |pet|
     @pet = pet
 
-    PetHelper.find_matches @pet
+    @pet.find_matches
 
     pet.pet_task
   end
