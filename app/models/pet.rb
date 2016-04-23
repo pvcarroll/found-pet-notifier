@@ -3,11 +3,8 @@ class Pet < ActiveRecord::Base
 
   def find_pet
     client = SODA::Client.new({:domain => "data.austintexas.gov", :app_token => "9lzsGmTO9Jp03lNdi1Db7JvJ6"})
-    puts "CLIENT ", client.inspect
     typeString = "type = '#{self.animalType}' AND (sex = '#{self.sex}' OR sex = 'Unknown')"
-    puts typeString
     response = client.get("kz4x-q9k5", {"$where" => typeString})
-    puts "RESPONSE ", response.inspect
     matches = []
     response.each do |hashie|
       looks_like = hashie.looks_like.downcase
@@ -31,9 +28,5 @@ class Pet < ActiveRecord::Base
       PetMailer.send_email(self, @matches).deliver_now
     end
     @matches
-  end
-
-  def pet_task
-    puts 'PET_TASK!!!!!!!!!!!'
   end
 end
