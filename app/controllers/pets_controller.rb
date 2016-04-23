@@ -5,11 +5,7 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
-
-    @matches = @pet.find_pet
-    if @matches.any?
-      PetMailer.send_email(@pet, @matches).deliver_now
-    end
+    @matches = @pet.find_matches
     if @pet.save
       render @pet
     elsif

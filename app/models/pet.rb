@@ -30,6 +30,7 @@ class Pet < ActiveRecord::Base
     if @matches.any?
       PetMailer.send_email(self, @matches).deliver_now
     end
+    @matches
   end
 
   def pet_task
