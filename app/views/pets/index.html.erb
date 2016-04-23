@@ -2,8 +2,8 @@
   <h2 class="formTitle">Get notified when matching pets are found</h2>
   <%= form_for(@pet) do |f| %>
     <fieldset class="form-group">
-      <%= f.label :animalType, 'Animal Type'%>
-      <%= f.select(:animalType, options_for_select([['Dog', 'Dog'], ['Cat', 'Cat']]), {}, {:class => 'form-control'}) %>
+      <%= f.label :animal_type, 'Animal Type'%>
+      <%= f.select(:animal_type, options_for_select([['Dog', 'Dog'], ['Cat', 'Cat']]), {}, {:class => 'form-control'}) %>
       <%= f.label :breed %>
       <%= f.text_field :breed, class: 'form-control' %>
       <%= f.label :color %>

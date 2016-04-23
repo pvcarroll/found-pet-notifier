@@ -3,7 +3,7 @@ class Pet < ActiveRecord::Base
 
   def find_pet
     client = SODA::Client.new({:domain => "data.austintexas.gov", :app_token => "9lzsGmTO9Jp03lNdi1Db7JvJ6"})
-    typeString = "type = '#{self.animalType}' AND (sex = '#{self.sex}' OR sex = 'Unknown')"
+    typeString = "type = '#{self.animal_type}' AND (sex = '#{self.sex}' OR sex = 'Unknown')"
     response = client.get("kz4x-q9k5", {"$where" => typeString})
     matches = []
     response.each do |hashie|
@@ -16,7 +16,7 @@ class Pet < ActiveRecord::Base
           (sex.include? self.sex.downcase || sex == 'Unknown')
         puts "LOOKS LIKE #{self.breed} AND COLOR LIKE #{self.color}"
         # create match pet object
-        matches.push({animalType: self.animalType, breed: looks_like, color: color, sex: sex, image: hashie.image.url})
+        matches.push({animal_type: self.animal_type, breed: looks_like, color: color, sex: sex, image: hashie.image.url})
       end
     end
     return matches
