@@ -1,5 +1,8 @@
 <div class="formContainer container">
-  <h2 class="formTitle">Get notified when matching pets are found</h2>
+  <div class="titleContainer">
+    <h2 class="formTitle">Found Pet Alert</h2>
+    <%= image_tag '/assets/question_mark.jpg', width: '20', height: '20', class: 'questionMark' %>
+  </div>
   <%= form_for(@pet) do |f| %>
     <fieldset class="form-group">
       <%= f.label :animal_type, 'Animal Type'%>

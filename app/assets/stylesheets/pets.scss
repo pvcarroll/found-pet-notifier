@@ -13,6 +13,17 @@ body {
   text-align: left;
   border-radius: 15px;
   opacity: .95;
+  .titleContainer {
+    margin: 0 auto;
+    text-align: center;
+    .questionMark {
+      vertical-align: initial;
+      margin-left: 10px;
+    }
+    .formTitle {
+      display: inline;
+    }
+  }
   label {
     margin-bottom: .1rem;
   }
@@ -21,9 +32,6 @@ body {
   }
 }
 
-.formTitle {
-  text-align: center;
-}
 
 #new_pet {
   margin: 20px 20px 0;
