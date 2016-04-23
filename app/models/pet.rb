@@ -10,16 +10,24 @@ class Pet < ActiveRecord::Base
       looks_like = hashie.looks_like.downcase
       color = hashie.color.downcase
       sex = hashie.sex.downcase
+      location = extract_location hashie
 
       if (looks_like.include? self.breed.downcase) &&
           (color.include? self.color.downcase) &&
           (sex.include? self.sex.downcase || sex == 'Unknown')
         puts "LOOKS LIKE #{self.breed} AND COLOR LIKE #{self.color}"
         # create match pet object
-        matches.push({animal_type: self.animal_type, breed: looks_like, color: color, sex: sex, image: hashie.image.url})
+        matches.push({animal_type: self.animal_type, breed: looks_like, color: color, sex: sex,
+                      found_location: location, image: hashie.image.url})
       end
     end
     return matches
+  end
+
+  def extract_location(hashie)
+    # hashie.location.human_address is a string. eval converts it to a hash.
+    location_hash = eval hashie.location.human_address
+    return "#{location_hash[:address]}, #{location_hash[:city]}, #{location_hash[:zip]}"
   end
 
   def find_matches
