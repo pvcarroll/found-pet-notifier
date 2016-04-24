@@ -1,7 +1,10 @@
 <div class="formContainer container">
   <div class="titleContainer">
     <h2 class="formTitle">Found Pet Alert</h2>
-    <%= image_tag '/assets/question_mark.jpg', width: '20', height: '20', class: 'questionMark' %>
+    <%= link_to "#{image_tag('/assets/question_mark.jpg', width: '20', height: '20', id: 'questionMarkIcon', class: 'questionMark')}".html_safe,
+                #,
+                nil, :title => 'Looks for matches in pets taken in by Austin Animal Control each day and will notify you if matches are found',
+                :rel => 'tooltip', "data-placement" => "right" %>
   </div>
   <%= form_for(@pet) do |f| %>
     <fieldset class="form-group">

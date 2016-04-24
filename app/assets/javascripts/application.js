@@ -16,3 +16,7 @@
 //= require_tree .
 //= require tether
 //= require bootstrap-sprockets
+
+jQuery( function($) {
+    $('questionMarkIcon').tooltip();
+});
