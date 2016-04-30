@@ -2,15 +2,16 @@
   <div class="titleContainer">
     <h2 class="formTitle">Found Pet Alert</h2>
     <button type="button" class="btn btn-md btn-info explanationPopover" data-toggle="popover" title="App description"
-            data-content="Searches the Austin Animal Control's list of pets taken in over the last 30 days.  You will be
+            data-placement="bottom" data-html="true"
+            data-content="<p>Searches the Austin Animal Control's list of pets taken in over the last 30 days.  You will be
             emailed if a match is found.  The service checks for new pets each day and lasts for 7 days.  You are welcome
             to create a new alert after 7 days if your pet is still missing.  You can use the service without providing
-            an email address to check the current list of recently taken in pets at Austin Animal Control.
+            an email address to check the current list of recently taken in pets at Austin Animal Control.</p>
 
-            Tips for using:
-            Provide a breed that is a part of full breed name.  For example, try 'Lab' instead of 'Labrador Retreiver' or 'black lab'.
-            Capitalization won't affect matches.
-            .">About the alert</button>
+            <p>Tips for using:<br />
+            For the breed field, try a part of full breed name.  For example, try 'Lab' instead of 'Labrador Retriever' or 'black lab'.
+            Capitalization won't affect matches.<br />
+            For the color field, choose the dominant color.</p>">About the alert</button>
   </div>
   <%= form_for(@pet) do |f| %>
     <fieldset class="form-group">
