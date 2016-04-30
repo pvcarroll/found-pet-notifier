@@ -10,8 +10,7 @@
 
             <p>Tips for using:<br />
             For the breed field, try a part of full breed name.  For example, try 'Lab' instead of 'Labrador Retriever' or 'black lab'.
-            Capitalization won't affect matches.<br />
-            For the color field, choose the dominant color.</p>">About the alert</button>
+            Capitalization won't affect matches.</p>">About the alert</button>
   </div>
   <%= form_for(@pet) do |f| %>
     <fieldset class="form-group">
@@ -19,7 +18,7 @@
       <%= f.select(:animal_type, options_for_select([['Dog', 'Dog'], ['Cat', 'Cat']]), {}, {:class => 'form-control'}) %>
       <%= f.label :breed %>
       <%= f.text_field :breed, class: 'form-control' %>
-      <%= f.label :color %>
+      <%= f.label :color, 'Dominant Color' %>
       <%= f.text_field :color, class: 'form-control' %>
       <%= f.label :sex %>
       <%= f.select(:sex, options_for_select([['Unknown', 'Unknown'],
