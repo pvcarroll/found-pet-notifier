@@ -1,10 +1,16 @@
 class Pet < ActiveRecord::Base
   # attr_accessor :animalType, :breed, :color, :sex, :email
 
-  def find_pet
-    client = SODA::Client.new({:domain => "data.austintexas.gov", :app_token => "9lzsGmTO9Jp03lNdi1Db7JvJ6"})
-    typeString = "type = '#{self.animal_type}' AND (sex = '#{self.sex}' OR sex = 'Unknown')"
-    response = client.get("kz4x-q9k5", {"$where" => typeString})
+  def find_matches
+    @matches = self.extract_matches_from_response
+    if @matches.any? && !self.email.blank?
+      PetMailer.send_email(self, @matches).deliver_now
+    end
+    @matches
+  end
+
+  def extract_matches_from_response
+    response = query_soda
     matches = []
     response.each do |hashie|
       looks_like = hashie.looks_like.downcase
@@ -24,17 +30,16 @@ class Pet < ActiveRecord::Base
     return matches
   end
 
+  def query_soda
+    client = SODA::Client.new({:domain => "data.austintexas.gov", :app_token => "9lzsGmTO9Jp03lNdi1Db7JvJ6"})
+    typeString = "type = '#{self.animal_type}' AND (sex = '#{self.sex}' OR sex = 'Unknown')"
+    response = client.get("kz4x-q9k5", {"$where" => typeString})
+    return response
+  end
+
   def extract_location(hashie)
     # hashie.location.human_address is a string. eval converts it to a hash.
     location_hash = eval hashie.location.human_address
     return "#{location_hash[:address]}, #{location_hash[:city]}, #{location_hash[:zip]}"
-  end
-
-  def find_matches
-    @matches = self.find_pet
-    if @matches.any? && !self.email.blank?
-      PetMailer.send_email(self, @matches).deliver_now
-    end
-    @matches
   end
 end
