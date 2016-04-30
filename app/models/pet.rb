@@ -32,7 +32,7 @@ class Pet < ActiveRecord::Base
 
   def find_matches
     @matches = self.find_pet
-    if @matches.any?
+    if @matches.any? && !self.email.blank?
       PetMailer.send_email(self, @matches).deliver_now
     end
     @matches
