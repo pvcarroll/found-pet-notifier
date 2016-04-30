@@ -6,9 +6,9 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @matches = @pet.find_matches
-    if @pet.save
+    if @matches.any? && @pet.save
       render @pet
-    elsif
+    else
       redirect_to index
     end
   end
