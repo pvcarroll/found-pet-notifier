@@ -1,5 +1,6 @@
 class Pet < ActiveRecord::Base
   # attr_accessor :animalType, :breed, :color, :sex, :email
+  serialize :matches, Array
 
   def find_matches
     @matches = self.extract_matches_from_response
@@ -10,6 +11,8 @@ class Pet < ActiveRecord::Base
   end
 
   def extract_matches_from_response
+    puts 'SELF.MATCHHES: ', self.matches
+    puts self.matches.class
     response = query_soda
     matches = []
     response.each do |hashie|
@@ -22,9 +25,16 @@ class Pet < ActiveRecord::Base
           (color.include? self.color.downcase) &&
           (sex.include? self.sex.downcase || sex == 'Unknown')
         puts "LOOKS LIKE #{self.breed} AND COLOR LIKE #{self.color}"
-        # create match pet object
+        # create a matching pet object
         matches.push({animal_type: self.animal_type, breed: looks_like, color: color, sex: sex,
                       found_location: location, image: hashie.image.url})
+
+
+        # Add match to pet's list of matches, so each match is only reported once.
+        self.matches.push(hashie.animal_id)
+        puts 'SELF.MATCHES: ', self.matches
+
+
       end
     end
     return matches
