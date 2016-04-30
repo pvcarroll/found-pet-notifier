@@ -1,10 +1,16 @@
 <div class="formContainer container">
   <div class="titleContainer">
     <h2 class="formTitle">Found Pet Alert</h2>
-    <%= link_to "#{image_tag('/assets/question_mark.jpg', width: '20', height: '20', id: 'questionMarkIcon', class: 'questionMark')}".html_safe,
-                #,
-                nil, :title => 'Looks for matches in pets taken in by Austin Animal Control each day and will notify you if matches are found',
-                :rel => 'tooltip', "data-placement" => "right" %>
+    <button type="button" class="btn btn-md btn-info explanationPopover" data-toggle="popover" title="App description"
+            data-content="Searches the Austin Animal Control's list of pets taken in over the last 30 days.  You will be
+            emailed if a match is found.  The service checks for new pets each day and lasts for 7 days.  You are welcome
+            to create a new alert after 7 days if your pet is still missing.  You can use the service without providing
+            an email address to check the current list of recently taken in pets at Austin Animal Control.
+
+            Tips for using:
+            Provide a breed that is a part of full breed name.  For example, try 'Lab' instead of 'Labrador Retreiver' or 'black lab'.
+            Capitalization won't affect matches.
+            .">About the alert</button>
   </div>
   <%= form_for(@pet) do |f| %>
     <fieldset class="form-group">
@@ -24,6 +30,6 @@
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
     </fieldset>
-    <%= f.submit 'Submit', class: 'submitButton btn btn-default' %>
+    <%= f.submit 'Submit', class: 'btn btn-primary submitButton' %>
   <% end %>
 </div>

@@ -20,7 +20,7 @@ body {
       vertical-align: initial;
     }
     .formTitle {
-      display: inline;
+      margin-bottom: 10px;
     }
   }
   label {
@@ -29,19 +29,13 @@ body {
   .form-control {
     margin-bottom: .6rem;
   }
+  .btn-primary.submitButton {
+    display: block;
+    margin: auto;
+  }
 }
 
 
 #new_pet {
   margin: 20px 20px 0;
-}
-
-.submitButton {
-  margin: 15px auto 0;
-  display: block;
-  background-color: #2E2F30;
-  color: #EFEFEF;
-  &:hover {
-    background-color: darkblue;
-  }
 }

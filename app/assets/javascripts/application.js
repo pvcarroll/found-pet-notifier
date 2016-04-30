@@ -17,6 +17,6 @@
 //= require tether
 //= require bootstrap-sprockets
 
-jQuery( function($) {
-    $('questionMarkIcon').tooltip();
-});
+jQuery( function() {
+    $('[data-toggle="popover"]').popover()
+})
