@@ -11,8 +11,6 @@ class Pet < ActiveRecord::Base
   end
 
   def extract_matches_from_response
-    puts 'SELF.MATCHHES: ', self.matches
-    puts self.matches.class
     response = query_soda
     matches = []
     response.each do |hashie|
@@ -21,7 +19,8 @@ class Pet < ActiveRecord::Base
       sex = hashie.sex.downcase
       location = extract_location hashie
 
-      if (looks_like.include? self.breed.downcase) &&
+      if (!self.matches.include? hashie.animal_id) &&
+          (looks_like.include? self.breed.downcase) &&
           (color.include? self.color.downcase) &&
           (sex.include? self.sex.downcase || sex == 'Unknown')
         puts "LOOKS LIKE #{self.breed} AND COLOR LIKE #{self.color}"
@@ -29,12 +28,8 @@ class Pet < ActiveRecord::Base
         matches.push({animal_type: self.animal_type, breed: looks_like, color: color, sex: sex,
                       found_location: location, image: hashie.image.url})
 
-
         # Add match to pet's list of matches, so each match is only reported once.
         self.matches.push(hashie.animal_id)
-        puts 'SELF.MATCHES: ', self.matches
-
-
       end
     end
     return matches
