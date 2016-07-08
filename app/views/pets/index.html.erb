@@ -34,6 +34,8 @@
                                                                   {}, {:class => 'form-control'}) %>
       <%= f.label 'Email (optional)' %>
       <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label 'Phone (optional) - add a number if you want to receive text notifications' %>
+      <%= f.phone_field :phone, class: 'form-control' %>
     </fieldset>
     <%= f.submit 'Submit', class: 'btn btn-primary submitButton' %>
   <% end %>

@@ -4,8 +4,13 @@ class Pet < ActiveRecord::Base
 
   def find_matches
     @matches = self.extract_matches_from_response
-    if @matches.any? && !self.email.blank?
-      PetMailer.send_email(self, @matches).deliver_now
+    if @matches.any?
+      if !self.email.blank?
+        PetMailer.send_email(self, @matches).deliver_now
+      end
+      if !self.phone.blank?
+        send_text_with_twilio
+      end
     end
     @matches
   end
@@ -46,5 +51,27 @@ class Pet < ActiveRecord::Base
     # hashie.location.human_address is a string. eval converts it to a hash.
     location_hash = eval hashie.location.human_address
     return "#{location_hash[:address]}, #{location_hash[:city]}, #{location_hash[:zip]}"
+  end
+
+  def send_text_with_twilio
+    require 'twilio-ruby'
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+
+    # set up a client to talk to the Twilio REST API
+    @client = Twilio::REST::Client.new account_sid, auth_token
+
+    @client.account.messages.create({
+                                        :from => '+12549388151',
+                                        :to => "#{self.phone}",
+                                        :body => "#{construct_text_message}",
+                                    })
+  end
+
+  def construct_text_message
+    message = ''
+    @matches.each do |match|
+      message += "#{match[:breed]} #{match[:color]} #{match[:image]}, "
+    end
   end
 end
